@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Logistics Website</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand py-0" href="javascript:void(0)"><img src="../../img/vshipper.png"
+                                                                    style="height:40px"></a>
+        <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse"
+                data-target="#navb" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse justify-content-center" id="navb">
+            <ul class="navbar-nav">
+                <!-- Dropdown -->
+                <li class="nav-item"><a class="nav-link" href="../../../my_packages.html">My Packages</a></li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop"
+                                                 data-toggle="dropdown">My Account</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="../../../account_settings.html">Account Settings</a>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="ngUI" ng-app="vshipper" ng-controller="MyPackagesController">
+    <div class="container internal">
+        <h1 class="pagetitle">My Packages</h1>
+        <p><span>You can hold packages in your suite at no charge for up to 30 days.</span>
+            <span style="float:right" id="addMore"><a href="#" style="font-weight:bold;">+ Add More</a></span></p>
+        <ul class="nav nav-tabs" id="countriesTabs">
+            <li class="nav-item" ng-repeat="country in countries">
+                <a class="nav-link" data-toggle="tab"
+                   ng-attr-href="#{{country.toLowerCase() + '-tab'}}" ng-class="($index===0)?'active':''">{{country}}
+                    ({{packagesInCountry[country].length}})</a></li>
+        </ul>
+        <div class="tab-content">
+
+            <div ng-repeat="country in countries" ng-attr-id="{{country.toLowerCase() + '-tab'}}"
+                 class="myorders table-responsive tab-pane" ng-class="($index===0)?'active':'fade'">
+                <table class="table table-striped" ng-attr-id="{{country.toLowerCase() + '-shipments'}}">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Package ID</th>
+                        <th>Current Location</th>
+                        <th>Item Name</th>
+                        <th>Last Activity Date</th>
+                        <th>Current Status</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="package in packagesInCountry[country]" ng-switch on="package.status">
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" value="" ng-checked="package.selected"
+                                   ng-model="package.selected"></td>
+                        <td><a ng-href="/packages/view/{{package.id}}">{{package.id}}</a></td>
+                        <td>{{package.country}}</td>
+                        <td>{{package.itemName}}</td>
+                        <td class="green">{{package.lifeSpan[0].date?package.lifeSpan[0].date:"No date"}}</td>
+                        <td ng-switch-when="PENDING_PAYMENT">
+                            <a href='/packages/pay?orderId={{package.orderId}}' onclick=>{{package.status}}</a>
+                        </td>
+                        <td ng-switch-default>
+                            {{package.status}}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <input type="submit" value="Send it to me" class="btn smallbtn" ng-click="sendPackages()">
+                <input type="submit" value="Pack as one" class="btn smallbtn"
+                       data-toggle="modal" data-target="#requestConsolidate" ng-click="consolidate()">
+                <input type="submit" value="Request photos" class="btn smallbtn"
+                       data-toggle="modal" data-target="#requestPhoto" ng-click="requestPhotos()">
+            </div>
+        </div>
+    </div>
+    <!-- The Modal -->
+    <div class="modal fade" id="requestPhoto">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Request Photos</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p>
+                        <span><label>Select Quantity</label></span>
+                        <span>
+                    <select>
+                    <option value="volvo">3 Photos</option>
+                    <option value="saab">10 Photos</option>
+                    </select>
+                </span>
+                    </p>
+                    <p>
+                    <h3>Price: {{photosQuote}}</h3></p>
+                    <p id="requestPhotoBody">Photos are completed within 24 business hours after you make your
+                        request.</p>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary midbtn" data-dismiss="modal"
+                            id="confirmRequestPhotos" ng-click="sendPhotoRequest()">Request Photos
+                    </button>
+                    <button type="button" class="btn btn-secondary smallbtn" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="requestConsolidate">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Request Consolidation</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p id="consolidationMessage">
+                        Once submitted, your request will show as “Consolidation Requested” under the “My Packages”.
+                        Once we
+                        finish consolidating your package, you will have a button “Pay Consolidation Charges”. After
+                        successful payment you will be able see your new consolidated package information, and ship your
+                        package.
+                    </p>
+                    <div id="consolidationInputs">
+                        <label for="consolidatedPackageName">Give a name for the consolidated package</label>
+                        <input type="text" id="consolidatedPackageName" ng-model="consolidatedPackageName">
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary smallbtn" data-dismiss="modal"
+                            id="sendConsolidationRequest" ng-click="sendConsolidationRequest()">Consolidate
+                    </button>
+                    <button type="button" class="btn btn-secondary smallbtn" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer container-fluid text-center">
+    <p class="copyright">©2019. All rights reserved.</p>
+</footer>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="js/redirect.js"></script>
+<script src="js/TokenHandler.js"></script>
+<script src="js/MyPackagesController.js"></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Logistics Website</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand py-0" href="javascript:void(0)"><img src="../../img/vshipper.png" style="height:40px"></a>
+        <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse"
+                data-target="#navb" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse justify-content-center" id="navb">
+            <ul class="navbar-nav">
+                <!-- Dropdown -->
+                <li class="nav-item"><a class="nav-link" href="../../../my_packages.html">My Packages</a></li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop"
+                                                 data-toggle="dropdown">My Account</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="../../../account_settings.html">Account Settings</a>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container internal" ng-app="vshipper" ng-controller="DeliveryController">
+    <div class="title">
+        <span><h1 class="pagetitle">Order Summary</h1></span>
+        <span>({{orderItems.length}} Item)</span>
+    </div>
+    <div class="row">
+        <div class="col-75">
+            <div class="ordersummary">
+                <div class="row">
+                    <div class="cart">
+                        <form id="regForm" action="success.html">
+                            <div class="lineartabs">
+                                <span class="step">Review Cart</span>
+                                <span class="step active">Delivery</span>
+                                <span class="step">Payment</span>
+                            </div>
+
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span>Shipping Method</span>
+                                    </div>
+                                    <div class="card-body shippingaddress">
+                                        <p>Please select a Shipping Method</p>
+                                        <div><span><input type="radio" name="shippingMethods" value="standard" ng-model="shippingMethod" ng-click="updateQuote()"></span>
+                                            <span>Standard Shipping</span>
+                                            <span>8 to 12 Days</span>
+                                        </div>
+                                        <div><span><input type="radio" name="shippingMethods" value="express" ng-model="shippingMethod" ng-click="updateQuote()"></span>
+                                            <span>Express Shipping</span>
+                                            <span>1 to 2 Days</a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span>Delivery Addresses</span>
+                                        <span class="rightnav"><a href="add_address.html">+ Add New</a></span></div>
+                                    <div class="card-body shippingaddress">
+                                        <p>Your package will be delivered to this address</p>
+                                        <div ng-repeat="address in actualAddresses">
+                                            <span>
+                                                <input type="radio" name="deliveryAddr" ng-value="address._id" ng-model="$parent.deliveryAddress" ng-click="updateQuote()">
+                                                <span>{{address.name}}<br/>{{address.street}}, {{address.city}} - {{address.zipCode}}, {{address.province}}<br/>{{address.phone}}</span>
+                                                <span><a href="#">Edit</a> | <a href="#">Delete</a></span>
+                                            </span>
+                                        </div>
+                                        <label class="checkboxcontainer">Billing address same as Delivery
+                                            <input type="checkbox" checked="checked" class="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span>Insurance by Chubb at 3%</span>
+                                        <div class="card-body shippingaddress">
+                                            <label class="checkboxcontainer">Yes I want my package to be insured
+                                            <input type="checkbox" class="checkbox" id="insuranceCheckbox" ng-click="updateQuote()" ng-model="insurance.selected">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    </div></div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span>Delivery Method</span>
+                                    </div>
+                                    <div class="card-body shippingaddress">
+                                        <p>Please select a Shipping Method</p>
+                                        <div><span><input type="radio" name="deliveryOptions" value="pickup" ng-model="deliveryMethod" ng-click="updateQuote()"></span>
+                                            <span>Self Pickup</span>
+                                            <span>Free</span>
+                                        </div>
+                                        <div><span><input type="radio" name="deliveryOptions" value="door" ng-model="deliveryMethod" ng-click="updateQuote()"></span>
+                                            <span>Door Delivery</span>
+                                            <span>$5</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div style="overflow:auto;">
+                                <div class="cart_cta">
+                                    <span><button type="button" id="prevBtn" class="btn smallbtn" ng-click="returnToReviewCart()">Previous</button></span>
+                                    <span><button type="button" id="nextBtn" class="btn midbtn" ng-click="proceedToPayment()">Make Payment</button></span>
+                                    <span class="text-danger" id="placeOrderError">Error!</span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-25">
+            <div class="pricesummary">
+                <div class="promocode"><h4>Promo Code</h4>
+                    <input type="text"/>
+                    <input type="submit" value="Apply" class="btn">
+                </div>
+                <h4>Cart</h4>
+                <p><a href="#">Delivery</a> <span class="price">${{quote.delivery}}</span></p>
+                <p><a href="#">Shipping</a> <span class="price">${{quote.shipping}}</span></p>
+                <p><a href="#">Tax</a> <span class="price">${{quote.tax}}</span></p>
+                <p><a href="#">Photo</a> <span class="price">${{quote.photos}}</span></p>
+                <p><a href="#">Consolidation</a> <span class="price">${{quote.consolidation}}</span></p>
+                <p><a href="#">Insurance</a> <span class="price">${{quote.insurance}}</span></p>
+                <p><a href="#">Discount</a> <span class="price">-${{quote.discount}}</span></p>
+                <hr>
+                <p>Total <span class="price" style="color:black"><b>${{quote.total}}</b></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/popper.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/redirect.js"></script>
+<script src="../js/TokenHandler.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="../js/DeliveryController.js"></script>
+
+<footer class="footer container-fluid text-center">
+    <p class="copyright">©2019. All rights reserved.</p>
+</footer>
+
+
+</body>
+</html>

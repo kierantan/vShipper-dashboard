@@ -1,0 +1,648 @@
+body {
+    /* font-family:arial, verdana; */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: #545454;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.bg-bar1 {
+    background-color: #b0e5a6;
+}
+
+.bg-bar2 {
+    background-color: #9eda92;
+}
+
+.bg-bar3 {
+    background-color: #8dca81;
+}
+
+.bg-bar4 {
+    background-color: #74b468;
+}
+
+.bg-bar5 {
+    background-color: #58a14a;
+}
+
+a, .page-link {
+    color: #e88f16;
+}
+
+a:hover,
+.page-link:hover {
+    color: #e97925;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 0px 0px 30px 0px;
+    padding: 0px;
+}
+
+h2 {
+    font-size: 21px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+h4 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.nav-tabs .nav-link.active {
+    color: #545454;
+}
+
+.nav-item {
+    font-weight: bold;
+}
+
+.tab-pane {
+    background-color: #f2f2f2;
+}
+
+.internal .tab-pane {
+    background-color: #fff;
+}
+
+.login {
+    width: 650px;
+    margin-top: 50px;
+}
+
+.loginwrapper {
+    position: relative;
+    padding: 30px 0 30px 0;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 4px;
+    margin: 5px 0;
+    opacity: 0.85;
+    display: inline-block;
+    line-height: 20px;
+    text-decoration: none; /* remove underline from anchors */
+    font-size: 12px;
+    border: solid #d7d7d7 1px;
+}
+
+textarea,
+select {
+    padding: 8px 10px;
+    border-radius: 4px;
+    margin: 5px 0;
+    opacity: 0.85;
+    display: inline-block;
+    line-height: 20px;
+    text-decoration: none; /* remove underline from anchors */
+    font-size: 12px;
+    border: solid #d7d7d7 1px;
+}
+
+.remark {
+    width: 99.4%;
+}
+
+.btn,
+a.btn {
+    background-color: #e88f16;
+    color: white;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 50px;
+    margin: 5px 5px 0px 0px;
+    opacity: 0.85;
+    display: inline-block;
+    line-height: 20px;
+    text-decoration: none; /* remove underline from anchors */
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.btn-outline-secondary {
+    padding: 7px 10px;
+    border: solid #d7d7d7 1px;
+    border-radius: 50px;
+    margin: 0px 5px 0px 0px;
+    opacity: 0.85;
+    line-height: 20px;
+    text-decoration: none; /* remove underline from anchors */
+    font-size: 10px;
+    text-transform: uppercase;
+    background: white;
+}
+
+.btn-outline-secondary:disabled {
+    border: solid #d7d7d7 1px;
+}
+
+.smallbtn {
+    width: 140px;
+}
+
+.midbtn {
+    width: 250px;
+}
+
+.largebtn {
+    width: 500px;
+}
+
+.topmargin {
+    margin-top: 10px;
+}
+
+.dropdown-menu {
+    border: solid #d7d7d7 1px;
+    font-size: 12px;
+    background: white;
+    color: #545454;
+    padding: 10px;
+}
+
+.radiogroup {
+    width: 100%;
+}
+
+.radiogroup input {
+    width: 40px;
+    display: inline-block;
+    text-align: left;
+    margin: 0px 0px 0px 0px;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.loginwrapper .btn {
+    width: 100%;
+}
+
+/* Two-column layout */
+.loginwrapper .col {
+    float: left;
+    margin: auto;
+    padding: 0 30px;
+}
+
+/* Clear floats after the columns */
+.loginwrapper .row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.loginform {
+    border-right: solid #dee2e6 1px;
+}
+
+.loginwrapper input:hover,
+.btn:hover {
+    opacity: 1;
+}
+
+.psw {
+    margin-top: 10px;
+    display: block;
+}
+
+/* add appropriate colors to fb, twitter and google buttons */
+.fb {
+    background-color: #3B5998;
+    color: white;
+}
+
+.google {
+    background-color: #dd4b39;
+    color: white;
+}
+
+.fb:hover,
+.google:hover {
+    color: white;
+}
+
+.signup span {
+    width: 48%;
+    display: inline-block;
+    margin: 0px 5px;
+}
+
+.addshipment span {
+    width: 31.5%;
+    display: inline-block;
+    margin: 0px 5px;
+}
+
+.addnewaddress span {
+    width: 48%;
+    display: inline-block;
+    margin: 0px 5px;
+}
+
+span.fullwidth {
+    width: 98.5%;
+    display: block;
+    margin: 0px 5px;
+}
+
+/* style the submit button */
+input[type=submit] {
+    background-color: #e88f16;
+    color: white;
+    cursor: pointer;
+}
+
+input[type=submit]:hover,
+.btn:hover,
+a.btn:hover {
+    background: #e88f16 !important;
+    color: #fff;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #ddd;
+    color: white;
+    text-align: center;
+    padding: 15px 0px 15px 0px;
+}
+
+.fixedfooter {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.copyright {
+    text-align: center;
+    color: #000;
+    font-size: 11px;
+    margin: 0px;
+}
+
+.internal {
+    width: 900px;
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+.pagetitle {
+    font-weight: bold;
+}
+
+.internal .card-body {
+    margin: 0px;
+    padding: 20px;
+}
+
+.green {
+    color: #39b509;
+}
+
+.red {
+    color: red;
+}
+
+.grey {
+    color: darkgoldenrod;
+}
+
+.blue {
+    color: mediumblue;
+}
+
+.internal table td {
+    vertical-align: middle;
+}
+
+.dashboard .card {
+    margin-bottom: 30px;
+}
+
+.dashboard .card-header {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.virtualaddress .nav-pane {
+    border: 0px;
+}
+
+.virtualaddress .tab-content {
+    margin: 20px 0px 0px 0px;
+    padding: 0px;
+}
+
+.virtualaddress .nav-tabs,
+.virtualaddress .nav-item.show,
+.virtualaddress .nav-link,
+.virtualaddress .nav-tabs,
+.virtualaddress .nav-link.active {
+    border: 0px;
+}
+
+.virtualaddress .nav-item .nav-link {
+    background-color: #fff;
+    margin: 0px 1px;
+    border-radius: 50px;
+    border: solid #ddd 1px;
+    padding: 5px 20px;
+}
+
+.virtualaddress .nav-link.active {
+    background-color: #e88f16;
+    color: white;
+}
+
+.virtualaddress p {
+    margin: 5px 0px;
+}
+
+.virtualaddress span:first-child {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.accountinfo span:first-child {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.rightnav {
+    float: right;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.shippingaddress div {
+    padding: 10px 0px;
+    border-top: solid #ddd 1px;
+}
+
+.shippingaddress span {
+    display: table-cell;
+    padding: 5px;
+}
+
+.shippingaddress input[type=radio] {
+    width: auto;
+}
+
+.profile {
+    text-align: center;
+}
+
+.profile h1 {
+    margin: 0px;
+    padding: 0px;
+    font-weight: bold;
+}
+
+.checkbox {
+    width: auto;
+    margin: 10px 0px 0px 10px;
+}
+
+/* Order Summary Classes */
+.ordersummary .row {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    margin: 0 -16px;
+    padding: 0px;
+}
+
+.col-25 {
+    -ms-flex: 25%; /* IE10 */
+    flex: 25%;
+}
+
+.col-50 {
+    -ms-flex: 50%; /* IE10 */
+    flex: 50%;
+}
+
+.col-75 {
+    -ms-flex: 75%; /* IE10 */
+    flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+    padding: 0 16px;
+}
+
+.ordersummary,
+.pricesummary {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+}
+
+.ordersummary label {
+    margin-bottom: 10px;
+    display: block;
+}
+
+span.price {
+    float: right;
+    color: grey;
+}
+
+.viewpackage {
+    margin-bottom: 20px;
+}
+
+.viewpackage .package {
+    padding: 20px 20px 10px 20px;
+    border: solid #ddd 1px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+
+}
+
+.formlabel {
+    width: 15%;
+    margin-left: 20px;
+    font-weight: bold;
+    padding: 5px 0px;
+    margin-bottom: 10px;
+}
+
+.formdata {
+    width: 30%;
+    border: solid #ddd 1px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+    .ordersummary .row {
+        flex-direction: column-reverse;
+    }
+
+    .col-25 {
+        margin-bottom: 20px;
+    }
+}
+
+.tab {
+    display: none;
+}
+
+.step {
+    margin: 0 2px;
+    border: #ddd solid 1px;
+    display: inline-block;
+    opacity: 0.5;
+    padding: 5px 15px;
+}
+
+/* Mark the active step: */
+.step.active {
+    opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+    background-color: #4CAF50;
+}
+
+.title span {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.lineartabs {
+    text-align: center;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.cart {
+    width: 100%;
+    margin: 0px;
+    padding: 15px;
+}
+
+.cart .lineartabs {
+    margin: 0px 0px 20px 0px;
+    padding: 0px;
+}
+
+.cart .card {
+    margin-bottom: 20px;
+}
+
+.cart .card-header {
+    font-weight: bold
+}
+
+.promocode {
+    margin: 0px 0px 20px 0px;
+    padding: 0px 0px 10px 0px;
+    border-bottom: solid #ddd 1px;
+}
+
+.cart_cta span {
+    display: inline-block;
+}
+
+.show-invalid .invalid {
+    border: 1px solid #dc3545;
+}
+
+/* Responsive layout - when the screen is less than 786px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 786px) {
+    .login h1 {
+        display: none
+    }
+
+    .login {
+        width: 80%;
+        margin-bottom: 40px;
+    }
+
+    .login .col {
+        width: 100%;
+        flex-basis: auto;
+        margin: 0 0px 20px 0;
+    }
+
+    .signup span {
+        width: 100%;
+        display: block;
+        margin: 0px;
+        padding: 0px 15px;
+    }
+
+    .signup span.fullwidth {
+        width: 100%;
+        margin: 0px;
+    }
+
+    .loginform {
+        border-right: 0px;
+    }
+
+    .pricesummary {
+        margin-top: 20px;
+    }
+
+    .formlabel {
+        width: 95%;
+        margin-left: 0px;
+    }
+
+    .formdata {
+        width: 95%;
+    }
+
+}
+
+/* Responsive layout - when the screen is less than 786px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 950px) {
+
+    .internal {
+        width: 90% !important;
+        max-width: 90% !important;
+    }
+
+    .addnewaddress span,
+    .addshipment span {
+        width: 100%;
+        display: block;
+        margin: 0px;
+        padding: 0px 15px;
+    }
+
+    .smallbtn,
+    .midbtn,
+    .largebtn {
+        width: 100%;
+    }
+
+    .footer {
+        position: relative;
+    }
+}
+

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Logistics Website</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand py-0" href="javascript:void(0)"><img src="../../img/vshipper.png" style="height:40px"></a>
+        <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse"
+                data-target="#navb" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse justify-content-center" id="navb">
+            <ul class="navbar-nav">
+                <!-- Dropdown -->
+                <li class="nav-item"><a class="nav-link" href="../../../my_packages.html">My Packages</a></li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop"
+                                                 data-toggle="dropdown">My Account</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="../../../account_settings.html">Account Settings</a>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container internal" ng-app="vshipper" ng-controller="AddPackagesController" id="addPackagesContainer">
+    <h1 class="pagetitle">Add Package</h1>
+    <div class="card bg-light">
+        <div class="card-body">
+            <div class="card-text addshipment">
+                <span class="fullwidth">
+                    <form>
+                        <div class="radiogroup">
+                            <label class="form-label"
+                                   ng-class="shippingDestinationsValid() ? '' : 'invalid'">Ship to</label>
+                            <label ng-repeat="country in shippingDestinations" class="d-inline">
+                                <input type="radio" ng-value="country.countryName" name="optradio" ng-model="$parent.selectedDestination">{{country.countryName}}
+                            </label>
+                        </div>
+                    </form>
+                </span>
+                <span><input type="text" name="url" placeholder="Tracking URL" required
+                             ng-model="packageData.trackingURL"
+                             ng-class="trackingURLValid() ? '' : 'invalid'"></span>
+                <span><input type="text" name="ecommerceprovider" placeholder="Ecommerce Provider" required
+                             ng-model="packageData.ecommerceProvider"
+                             ng-class="ecommerceProviderValid() ? '' : 'invalid'"></span>
+                <span><input type="text" name="logisticsprovider" placeholder="Logistics Provider" required
+                             ng-model="packageData.logisticsProvider"
+                             ng-class="logisticsProviderValid() ? '' : 'invalid'"></span>
+                <span><input type="text" name="courierid" placeholder="Courier Tracking ID" required
+                             ng-model="packageData.courierTrackingId"
+                             ng-class="courierTrackingIdValid() ? '' : 'invalid'"></span>
+                <span><input type="text" name="itemname" placeholder="Item Name" required
+                             ng-model="packageData.itemName"
+                             ng-class="itemNameValid() ? '' : 'invalid'"></span>
+                <span><input type="text" name="itemvalue" placeholder="Declared Value" required
+                             ng-model="packageData.declaredValue"
+                             ng-class="declaredValueValid() ? '' : 'invalid'"></span>
+                <span class="fullwidth"><textarea rows="1" class="remark" placeholder="Remark"
+                                                  ng-model="packageData.remark"
+                                                  ng-class="remarkValid() ? '' : 'invalid'"></textarea></span>
+                <span class="fullwidth">
+                    <input type="submit" value="Save" class="btn smallbtn" id="formSubmit">
+                    <input type="submit" value="cancel" class="btn smallbtn" id="formCancel">
+                </span>
+            </div>
+        </div>
+    </div>
+    <br/>
+</div>
+
+
+<footer class="footer container-fluid text-center fixedfooter">
+    <p class="copyright">©2019. All rights reserved.</p>
+</footer>
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/popper.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="../js/redirect.js"></script>
+<script src="../js/TokenHandler.js"></script>
+<script src="../js/AddPackagesController.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Logistics Website</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand py-0" href="javascript:void(0)"><img src="../../img/vshipper.png" style="height:40px"></a>
+        <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse"
+                data-target="#navb" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse justify-content-center" id="navb">
+            <ul class="navbar-nav">
+                <!-- Dropdown -->
+                <li class="nav-item"><a class="nav-link" href="../../../my_packages.html">My Packages</a></li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop"
+                                                 data-toggle="dropdown">My Account</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="../../../account_settings.html">Account Settings</a>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid internal dashboard" ng-app="vshipper" ng-controller="MyAccountController">
+    <div class="card-deck">
+        <div class="card">
+            <div class="card-body accountinfo profile">
+                <p><img src="img/placeholder.jpg" style="width:200px;border:solid #ddd 1px"></p>
+                <p>
+                <h1>{{account.firstName}} {{account.lastName}}</h1></p>
+                <p>
+                    <span>Email</span>
+                    <span>{{account.emailId}}</span> <a href="#">Edit</a></p>
+                <p>
+                    <span>Mobile</span>
+                    <span>{{account.mobileNumber}}</span> <a href="#">Edit</a></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <span>My Shipping Addresses</span>
+                <span class="rightnav"><a href="/addresses/new">+ Add New</a></span>
+            </div>
+            <div class="card-body shippingaddress">
+                <div ng-repeat="address in actualAddressesInEachPage[pageNumber]">
+                    <span ><input type="radio" name="optradio"></span>
+                    <span>{{address.name}}<br/>{{address.street + " " + address.city + " " + address.province + " " +address.country}}<br/>{{address.phone}}</span>
+                    <span><a href="#">Edit</a> | <a href="#">Delete</a></span>
+                </div>
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" ng-class="(pageNumber === 0) ? 'disabled':''">
+                        <a class="page-link" href="#" ng-click="prevAddressPage()">Prev</a>
+                    </li>
+                    <li class="page-item" ng-repeat="page in actualAddressesInEachPage" ng-class="($index === pageNumber) ? 'disabled':''">
+                        <a class="page-link" href="#" ng-click="clickAddressPage($index)">{{$index + 1}}</a>
+                    </li>
+                    <li class="page-item" ng-class="(pageNumber === actualAddressesInEachPage.length - 1 || actualAddressesInEachPage.length === 0) ? 'disabled': ''">
+                        <a class="page-link" href="#" ng-click="nextAddressPage()">Next</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-deck">
+        <div class="card">
+            <div class="card-header">Update your password</div>
+            <div class="card-body accountinfo">
+                <!--<p><span><input type="text" name="oldpassword" placeholder="Old Password" required></span></p>-->
+                <p><span><input type="text" name="newpassword" placeholder="New Password" required></span></p>
+                <p><span><input type="text" name="confirmpassword" placeholder="Confirm Password" required></span></p>
+                <p><input type="submit" value="Change Password" class="btn midbtn"></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">My Virtual Addresses</div>
+            <div class="card-body virtualaddress">
+                <ul class="nav nav-tabs" >
+                    <li class="nav-item" ng-repeat = "virtualAddress in virtualAddresses">
+                        <a class="nav-link" ng-class = "($index===0)?'active':''" data-toggle="tab" ng-href="#{{virtualAddress.country}}">{{virtualAddress.country}}</a>
+                    </li>
+                </ul>
+                <div class="container tab-content" >
+                    <div ng-repeat = "virtualAddress in virtualAddresses" id="{{virtualAddress.country}}" class="tab-pane" ng-class = "($index===0)?'active':''">
+                        <p ng-repeat="(key,value) in virtualAddress">
+                            <span>{{key}}</span>
+                            <span>{{value}}</span></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+
+<footer class="footer container-fluid text-center">
+    <p class="copyright">©2019. All rights reserved.</p>
+</footer>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="js/redirect.js"></script>
+<script src="js/TokenHandler.js"></script>
+<script src="js/MyAccountController.js"></script>
+</body>
+</html>

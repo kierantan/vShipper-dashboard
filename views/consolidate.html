@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Logistics Website</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+</head>
+    
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand py-0" href="javascript:void(0)"><img src="../../img/vshipper.png" style="height:40px"></a>
+        <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse"
+                data-target="#navb" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse justify-content-center" id="navb">
+            <ul class="navbar-nav">
+                <!-- Dropdown -->
+                <li class="nav-item"><a class="nav-link" href="../../../my_packages.html">My Packages</a></li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop"
+                                                 data-toggle="dropdown">My Account</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="../../../account_settings.html">Account Settings</a>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+<div class="container internal">
+    <h1 class="pagetitle">Consolidation</h1> 
+    
+    <p>Select packages to consolidate. Get lower shipping rates by shipping everything in one box! Shipping one box with items from multiple retailers is far less expensive than shipping separate boxes. Let us maximize your shipping savings!</p>
+    
+    <ul class="nav nav-tabs">       
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#india">India (4)</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#usa">USA (2)</a></li>   
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#dubai">Dubai (1)</a></li>   
+    </ul>
+    <div class="tab-content">
+        
+        <!-- INDIA -->
+        
+        <div id="india" class="myorders table-responsive  tab-pane active">
+            <table class="table table-striped" id="shipments">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" class="checkbox" value=""></th>
+                        <th>Tracking Number</th>         
+                        <th>Storage Time</th>
+                        <th>Item Name</th>
+                        <th>Product Type</th>            
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" value=""></td>
+                        <td><a href="view_package.html">#678954</a></td>            
+                        <td>10 Days</td>
+                        <td>T-Shirt</td>            
+                        <td>Merchandise</td>
+                    </tr> 
+                     <tr>
+                        <td> <input type="checkbox" class="checkbox" value=""></td>
+                         <td><a href="view_package.html">#678954</a></td>            
+                        <td>5 Days</td>
+                        <td>T-Shirt</td>            
+                        <td>Merchandise</td>
+                    </tr>    
+                     <tr>
+                        <td> <input type="checkbox" class="checkbox" value=""></td>
+                         <td><a href="view_package.html">#898658</a></td>            
+                        <td>15 Days</td>
+                        <td>Sofa Chair</td>            
+                        <td>Furniture</td>
+                    </tr>  
+                     <tr>
+                        <td> <input type="checkbox" class="checkbox" value=""></td>
+                         <td><a href="view_package.html">#678954</a></td>            
+                        <td>1 Day</td>
+                        <td>Pringles</td>            
+                        <td>Food</td>
+                    </tr>   
+                </tbody>
+            </table>
+            <input type="submit" value="Consolidate" class="btn smallbtn"  data-toggle="modal" data-target="#myModal">      
+        </div> 
+        
+        <!-- USA -->
+        
+        <div id="usa" class="myorders table-responsive  tab-pane fade">
+            <table class="table table-striped" id="shipments">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Tracking Number</th>         
+                    <th>Storage Time</th>
+                    <th>Item Name</th>
+                    <th>Product Type</th>            
+                </tr>
+            </thead>
+            <tbody>
+                 <tr>
+                    <td><input type="checkbox" class="checkbox" value=""></td>
+                     <td><a href="view_package.html">#678954</a></td>            
+                    <td>10 Days</td>
+                    <td>T-Shirt</td>            
+                    <td>Merchandise</td>
+                </tr> 
+                 <tr>
+                    <td> <input type="checkbox" class="checkbox" value=""></td>
+                     <td><a href="view_package.html">#678954</a></td>            
+                    <td>5 Days</td>
+                    <td>T-Shirt</td>            
+                    <td>Merchandise</td>
+                </tr>    
+            </tbody>
+            </table>        
+            <input type="submit" value="Consolidate" class="btn smallbtn"  data-toggle="modal" data-target="#myModal">
+        </div>  
+        
+        <!-- DUBAI -->
+        
+        <div id="dubai" class="myorders table-responsive  tab-pane fade">
+            <table class="table table-striped" id="shipments">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Tracking ID</th>         
+                        <th>Storage Time</th>
+                        <th>Item Name</th>
+                        <th>Product Type</th>            
+                    </tr>
+                </thead>
+                <tbody>
+                   <tr>
+                        <td> <input type="checkbox" class="checkbox" value=""></td>
+                       <td><a href="view_package.html">#678954</a></td>            
+                        <td>5 Days</td>
+                        <td>T-Shirt</td>            
+                        <td>Merchandise</td>
+                    </tr>    
+                  </tbody>
+                </table>                    
+        </div>  
+    </div>       
+</div>
+
+
+<footer class="footer container-fluid text-center" >
+    <p class="copyright">©2019. All rights reserved.</p>
+</footer>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Request Consolidation</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          Once submitted, your request will show as “Consolidation Requested” under the “My Packages”. Once we finish consolidating your package, you will have a button “Make Payment”. After successful payment you will be able see your new consolidated package information, and ship your package.
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary smallbtn" data-dismiss="modal">Send Request</button>
+          <button type="button" class="btn btn-secondary smallbtn" data-dismiss="modal">Cancel</button>
+        </div>
+
+      </div>
+    </div>
+</div> 
+</body>
+</html>

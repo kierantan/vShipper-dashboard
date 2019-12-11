@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Logistics Website</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+    <script src ="js/MyLoginController.js"></script>
+</head>
+    
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">Logo</a>    
+</nav>
+    
+<div class="container login" ng-app="vshipper" ng-controller="MyLoginController">
+    <h1>Ship easier with us. Get started today.</h1>
+    
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#signin">Sign In</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#signup">Sign Up</a></li>   
+    </ul>
+
+<!-- Tab panes -->
+    <div class="tab-content">
+        <div id="signin" class="container tab-pane active">
+            <div class="loginwrapper">
+
+                    <div class="row">         
+                        <div class="col loginform">
+                            <form id = 'loginForm' >
+                                <input type="text" name="username" placeholder="Email OR Phone" required>
+                                <input type="password" name="password" placeholder="Password" required>
+                                <input type="submit" ng-click = "myLogin_withUserNamePassword()" value="Login" class="btn">
+                                <span class="psw">Forgot <a href="#">password?</a></span>
+                            </form>
+                        </div>
+                        <div class="col socialform">           
+                            <button class="fb btn" ng-click="myLogin_withFacebook()">Login with Facebook</button>
+                            <button  class="google btn" ng-click="myLogin_withGoogle()">Login with Gmail</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div id="signup" class="container tab-pane fade">    
+            <div class="loginwrapper signup"> 
+                <form >
+                    <span><input type="text" ng-model="firstname" placeholder="First Name" required></span>
+                    <span><input type="text" ng-model="lastname" placeholder="Last Name" required></span>
+                    <span><input type="text" ng-model="email" placeholder="Email" required></span>
+                    <span><input type="text" ng-model="Phone" placeholder="Phone" required></span>
+                    <span><input type="password" ng-model="createpassword" placeholder="Create Password" required></span>
+                    <span><input type="password" ng-model="confirmpassword" placeholder="Confirm Password" required></span>
+                    <span class="fullwidth"><input ng-click ="createAccount()" type="submit" value="Register" class="btn"></span>
+                </form>
+            </div>
+        </div>    
+    </div>
+</div>
+
+<footer class="footer container-fluid text-center fixedfooter" >
+    <p class="copyright">©2019. All rights reserved.</p>
+</footer>
+    
+</body>
+</html>

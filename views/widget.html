@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Logistics Website</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+    <link rel="stylesheet" href="css/progress-tracker.css">    
+</head>
+    
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">Logo</a>
+    <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="false">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse justify-content-center" id="navb">
+        <ul class="navbar-nav">          
+            <!-- Dropdown -->
+            <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Shipments</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="add_package.html">Add Package</a>
+                <a class="dropdown-item" href="my_packages.html">My Packages</a>                
+            </div>
+            </li>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">My Account</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="account_settings.html">Account Settings</a>
+                <a class="dropdown-item" href="#">Logout</a>                
+            </div>
+            </li>            
+        </ul>        
+    </div>
+</nav>
+    
+<div class="container-fluid internal dashboard">
+  <h1>Progress Tracker</h1>
+  <h3>Option I(Percentage based)</h3> 
+  <div class="progress">
+    <div class="progress-bar bg-bar1" style="width:20%">
+      Status I
+    </div>
+    <div class="progress-bar bg-bar2" style="width:20%">
+      Status II
+    </div>
+    <div class="progress-bar bg-bar3" style="width:20%">
+      Status III
+    </div>
+       <div class="progress-bar bg-bar4" style="width:20%">
+      Status IV
+    </div>
+       <div class="progress-bar bg-bar5" style="width:20%">
+      Status V
+    </div>
+  </div>
+<br/><br/><br/>
+<h3>Option II</h3> 
+ <div class="demo">
+     
+        <ul class="progress-tracker progress-tracker--word progress-tracker--word-center">
+          <li class="progress-step is-complete">
+            <span class="progress-marker"></span>
+            <span class="progress-text">
+              <h4 class="progress-title">Step 1</h4>
+            </span>
+          </li>
+
+          <li class="progress-step is-complete">
+            <span class="progress-marker"></span>
+            <span class="progress-text">
+              <h4 class="progress-title">Step 2</h4>
+            </span>
+          </li>
+
+          <li class="progress-step is-active">
+            <span class="progress-marker"></span>
+            <span class="progress-text">
+              <h4 class="progress-title">Step 3</h4>
+            </span>
+          </li>
+
+          <li class="progress-step">
+            <span class="progress-marker"></span>
+            <span class="progress-text">
+              <h4 class="progress-title">Step 4</h4>
+            </span>
+          </li>
+
+          <li class="progress-step">
+            <span class="progress-marker"></span>
+            <span class="progress-text">
+              <h4 class="progress-title">Step 5</h4>
+            </span>
+          </li>
+        </ul>
+
+      </div>    
+    
+    
+</div>
+
+<footer class="footer container-fluid text-center" >
+    <p class="copyright">©2019. All rights reserved.</p>
+</footer>
+    
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Logistics Website</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="js/redirect.js"></script>
+    <script src="js/TokenHandler.js"></script>
+    <script src="js/DashboardController.js"></script>
+</head>
+    
+<body ng-app ="vshipper" ng-controller="DashboardController">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand py-0" href="javascript:void(0)"><img src="../../img/vshipper.png" style="height:40px"></a>
+        <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse"
+                data-target="#navb" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse justify-content-center" id="navb">
+            <ul class="navbar-nav">
+                <!-- Dropdown -->
+                <li class="nav-item"><a class="nav-link" href="../../../my_packages.html">My Packages</a></li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop"
+                                                 data-toggle="dropdown">My Account</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="../../../account_settings.html">Account Settings</a>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+<div class="container-fluid internal dashboard" >
+    <div class="card-deck">
+        <div class="card">
+            <div class="card-header">My Virtual Addresses</div>
+            <div class="card-body virtualaddress">
+                <ul class="nav nav-tabs" >
+                    <li class="nav-item" ng-repeat = "virtualAddress in virtualAddresses">
+                        <a class="nav-link" ng-class = "($index===0)?'active':''" data-toggle="tab" ng-href="#{{virtualAddress.country}}">{{virtualAddress.country}}</a>
+                    </li>
+                </ul>
+                <div class="container tab-content" >
+                    <div ng-repeat = "virtualAddress in virtualAddresses" id="{{virtualAddress.country}}" class="tab-pane" ng-class = "($index===0)?'active':''"  >
+                        <p ng-repeat="(key,value) in virtualAddress">
+                            <span>{{key}}</span>
+                            <span>{{value}}</span></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">Account Information</div>
+            <div class="card-body accountinfo">
+                <p>
+                    <span>Member Since</span>  
+                    <span>{{accInfo.creationDate.substring(0,10)}}</span></p>
+                <p>
+                    <span>Member Type</span>
+                    <span>{{accInfo.memberType}}</span></p>
+                <p>
+                    <span>Name</span>
+                    <span>{{accInfo.firstName + " " + accInfo.lastName}}</span></p>
+                <p>
+                    <span>Placeholder</span>
+                    <span>Sample Data</span></p>
+              <p>
+                    <span>Placeholder</span>
+                    <span>Sample Data</span></p>
+              <p>
+                    <span>Placeholder</span>
+                    <span>Sample Data</span></p>
+            </div>
+        </div>    
+  </div>
+    
+    <div class="card">
+        <div class="card-header"><span>Summary</span>
+            <span class="rightnav"><a href="add_package.html">Add Package</a> | <a href="my_packages.html">Start New Order</a></span>
+        </div>
+        <div class="card-body">
+            <ul class="nav nav-tabs">
+                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#newPackage">New Package</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#shipping">Shipping</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#delivered">Delivered</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#orders">Orders</a></li>
+            </ul>
+            <div class="container tab-content">
+                <!-- In Progress Orders -->
+                <div id="newPackage" class="myorders table-responsive  tab-pane active">
+                    <table class="table">
+                <thead>
+                <tr>
+                <th>Package ID</th>
+                <th>Date Arrive</th>
+                <th>Storage Days</th>
+                <th>Item Name</th>
+                <th>Status</th>                    
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat = "package in classifiedPackages.newPackagesArray">
+                    <td><a href="#" ng-click = "direct2PackageView(package._id)">{{package._id}}</a ></td >
+                <td>{{package.dateArrive}}</td>
+                <td>{{package.DaysAfterArrival}}</td>
+                <td>{{package.itemName}}</td>
+                <td>{{package.status}}</td>
+                </tr>
+                </tbody>
+                </table>
+                </div>
+                <!-- Shipped Orders -->
+                <div id="shipping" class="myorders table-responsive  tab-pane">
+                    <table class="table">
+                    <thead>
+                    <tr>
+                    <th>Package ID</th>
+                    <th>Date</th>
+                    <th>Item Name</th>
+                    <th>Delivery Time</th>
+                    <th>Status</th>                    
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat = "package in classifiedPackages.shippingPackagesArray">
+                    <td>{{package._id}}</td>
+                    <td> </td>
+                    <td>{{package.itemName}}</td>
+                    <td>7 to 9 business days</td>                    
+                    <td>{{package.status}}</td>
+                    </tr>              
+                    </tbody>
+                    </table>
+                </div>
+                <!-- Delivered Orders -->
+                <div id="delivered" class="myorders table-responsive  tab-pane">
+                    <table class="table">
+                    <thead>
+                    <tr>
+                    <th>Order ID</th>
+                    <th>Item Name</th> 
+                    <th>Delivery Date</th>
+                    <th>Method</th>         
+                    <th>Delivered By</th>                                       
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat = "package in classifiedPackages.shippingPackagesArray">
+                    <td>#654321</td>
+                    <td>T-Shirt</td>
+                    <td>01/01/2019</td>
+                    <td>Door Delivery</td>                    
+                    <td>Mark Henry</td>
+                    </tr>              
+                    </tbody>
+                    </table>
+                </div>
+                <!-- Payments -->
+                <div id="orders" class="myorders table-responsive  tab-pane">
+                    <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Price</th>
+                                    <th>Order Date</th>
+                                    <th>Method</th>
+                                    <th>PaymentDate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat = "order in orders">
+                                    <td>{{order._id}}</td>
+                                    <td>{{order.price}}</td>
+                                    <td>{{order.orderDate}}</td>
+                                    <td>Credit Card</td>
+                                    <td>{{order.paymentDate}}</td>
+                                </tr>
+                         </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer container-fluid text-center" >
+    <p class="copyright">©2019. All rights reserved.</p>
+</footer>
+    
+</body>
+</html>

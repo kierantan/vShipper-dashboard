@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+    <p class="testSpace">Hi fdsafas</p>
+</body>
+
+<script>
+    async function testAPIs() {
+        var postUser = await fetch(`http://localhost:3000/account`, {
+            method: "post",
+            headers: {
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify({
+                email: "nick@gmail.com",
+                phone: 52432432134,
+                firstName: "Nick",
+                lastName: "Yue",
+                password: "12345"
+            })
+        });
+        var postUserJson = await postUser.json();
+        console.dir(postUserJson);
+    }
+    testAPIs();
+</script>
+</html>
